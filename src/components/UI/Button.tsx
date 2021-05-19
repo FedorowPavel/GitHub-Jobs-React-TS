@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { StyledComponent, MyTheme } from 'styled-components'
 
-const Button = styled.button`
+const Button: StyledComponent<'button', { theme: MyTheme }> = styled.button`
     height: 48px;
     width: 146px;
     position: absolute;
@@ -16,8 +16,8 @@ const Button = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: ${(props) => props.theme.primaryColorHover};
+        background-color: ${(props) => props.theme.primaryColor};
     }
-`;
+`
 
-export default Button;
+export default Button

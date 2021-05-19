@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled, { StyledComponent, MyTheme } from 'styled-components'
 
-const InputSearch = styled.input`
+const InputSearch: StyledComponent<'input', { theme: MyTheme }> = styled.input`
     height: 56px;
-    border: none;
     border-radius: 4px;
     padding-right: -160px;
     border: 2px solid white;
@@ -13,6 +12,6 @@ const InputSearch = styled.input`
         outline: none;
         border: 2px solid ${(props) => props.theme.primaryColor};
     }
-`;
+`
 
-export default InputSearch;
+export default InputSearch

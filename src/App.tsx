@@ -1,18 +1,29 @@
-import React from 'react';
+import React from 'react'
 
-import './App.css';
-import Logo from './components/Logo';
-import HeaderSearch from './components/HeaderSearch';
+import Logo from './components/Header/Logo'
+import Main from './components/Main'
+import Aside from './components/Aside'
+import Header from './components/Header/Header'
+import Wrapper from './components/Wrapper'
+import HeaderSearch from './components/Header/HeaderSearch'
+import Footer from './components/Footer'
 
-const App: React.FC = () => {
-    return (
-        <div className="wrapper">
-            <header>
-                <Logo />
-                <HeaderSearch />
-            </header>
-        </div>
-    );
-};
+const App: React.FC = () => (
+  <Wrapper>
+    <Header>
+      <Logo />
+      <HeaderSearch />
+    </Header>
+    <Aside>
+      Sidebar
+    </Aside>
+    <Main>
+      main content
+    </Main>
+    <Footer>
+      Footer
+    </Footer>
+  </Wrapper>
+)
 
-export default App;
+export default App

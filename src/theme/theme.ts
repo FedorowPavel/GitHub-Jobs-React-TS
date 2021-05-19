@@ -1,7 +1,9 @@
-const theme = {
-    logoTextSize: '36px',
-    primaryColor: '#4799ff',
-    primaryColorHover: '#3992ff',
-};
+import { MyTheme } from 'styled-components'
 
-export default theme;
+const theme: MyTheme = {
+  logoTextSize: '36px',
+  primaryColor: '#4799ff',
+  primaryColorHover: '#3992ff'
+}
+
+export default theme
