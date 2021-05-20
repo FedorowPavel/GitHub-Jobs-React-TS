@@ -9,14 +9,14 @@ const Button: StyledComponent<'button', { theme: MyTheme }> = styled.button`
     transform: translateY(-50%);
     color: white;
     border-radius: 4px;
-    background-color: #1e86ff;
+    background-color:  ${(props) => props.theme.primaryColor};
     border: none;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
 
     &:hover {
-        background-color: ${(props) => props.theme.primaryColor};
+        background-color: ${(props) => props.theme.primaryColorHover};
     }
 `
 

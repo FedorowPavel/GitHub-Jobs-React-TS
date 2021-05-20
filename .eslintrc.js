@@ -49,7 +49,7 @@ module.exports = {
       ignoreUrls: true,
       ignoreStrings: true
     }],
-    indent: ['error', 2],
+    indent: ['error', 2, {"ignoredNodes": ["JSXElement"]}],
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',

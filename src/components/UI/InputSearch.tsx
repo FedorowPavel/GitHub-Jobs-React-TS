@@ -8,6 +8,11 @@ const InputSearch: StyledComponent<'input', { theme: MyTheme }> = styled.input`
     width: 100%;
     padding-left: 18px;
     font-size: 14px;
+  
+    &::placeholder {
+      color:${(props) => props.theme.infoFontColor}
+    }
+  
     &:focus {
         outline: none;
         border: 2px solid ${(props) => props.theme.primaryColor};

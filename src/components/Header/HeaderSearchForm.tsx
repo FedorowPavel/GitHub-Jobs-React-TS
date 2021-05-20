@@ -6,7 +6,7 @@ import InputSearch from '../UI/InputSearch'
 function HeaderSearchForm(): JSX.Element {
   return (
     <form>
-      <InputSearch type="text" />
+      <InputSearch type="text" placeholder="Title, companies, expertise or benefits" />
       <Button type="submit">Search</Button>
     </form>
   )

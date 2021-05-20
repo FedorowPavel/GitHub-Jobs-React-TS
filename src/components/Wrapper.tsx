@@ -5,35 +5,42 @@ const Wrapper = styled.div`
   min-height: 100vh;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 3fr 7fr;
+  grid-template-columns: 3.5fr 6.5fr;
   grid-template-rows: auto 1fr auto;
-  grid-column-gap: 32px;
-  grid-row-gap: 54px;
+  grid-gap: 32px;
+  color: ${(props) => props.theme.primaryTextColor};
   
+
   & header {
     grid-column: 1 / 3;
-    grid-row: 1 / 2 ;
+    grid-row: 1 / 2;
+    
+    
   }
-  
+
   & aside {
-    border: 1px solid red;
+    //border: 1px solid rgba(128, 128, 128, 0.1);
+    padding-top: 12px;
     grid-column: 1 / 2;
-    grid-row: 2 / 3 ;
+    grid-row: 2 / 3;
+
+    input {
+      height: 48px;
+    }
   }
-  
+
   & main {
-    border: 1px solid red;
+    //border: 1px solid rgba(128, 128, 128, 0.1);
     grid-column: 2 / 3;
-    grid-row: 2 / 3 ;
+    grid-row: 2 / 3;
   }
-  
+
   & footer {
-    height: 100px;
-    border: 1px solid red;
+    //border: 1px solid rgba(128, 128, 128, 0.1);
     grid-column: 1 / 3;
-    grid-row: 3 / 4 ;
+    grid-row: 3 / 4;
   }
-  
+
 `
 
 export default Wrapper

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const LogoText = styled.div`
     font-size: ${(props) => props.theme.logoTextSize};
+    color: #282538;
     padding: 32px 0;
 `
 
