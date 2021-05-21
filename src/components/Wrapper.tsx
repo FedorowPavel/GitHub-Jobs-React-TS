@@ -33,6 +33,7 @@ const Wrapper = styled.div`
     //border: 1px solid rgba(128, 128, 128, 0.1);
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+    
   }
 
   & footer {

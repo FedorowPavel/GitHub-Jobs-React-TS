@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Logo from './components/Header/Logo'
 import Main from './components/Main'
 import Aside from './components/Aside/Aside'
@@ -11,6 +10,7 @@ import Checkbox from './components/UI/Checkbox'
 import InputSearch from './components/UI/InputSearch'
 import Title from './components/Aside/Title'
 import RadioInputs from './components/Aside/RadioInput'
+import ListOfJobs from './components/Main/ListOfJobs'
 
 const App: React.FC = () => (
   <Wrapper>
@@ -25,7 +25,7 @@ const App: React.FC = () => (
       <RadioInputs name="cities" />
     </Aside>
     <Main>
-      main content
+      <ListOfJobs />
     </Main>
     <Footer>
       Footer
