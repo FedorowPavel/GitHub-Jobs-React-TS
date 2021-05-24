@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import StyledListItem from './JobCard'
 import Loader from '../UI/Loader'
+import useJobsFetch from '../../assets/custom-hooks/useJobsFetch'
+import JobItem from './JobCard/JobCard'
 
-const BASE_URL: string = '/positions.json'
-
-interface Jobs {
+interface Job {
   id: string,
   title: string,
   company: string,
-  companyLogo: string,
-  companyUrl: string,
-  createdAt: string,
+  company_logo: string,
+  company_url: string,
+  created_at: string,
   description: string,
   location: string,
   type: string,
@@ -24,42 +23,28 @@ const StyledUl = styled.ul`
 `
 
 const ListOfJobs: React.FC = () => {
-  const [items, setItems] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const { isLoading, items } = useJobsFetch()
 
-  function fetchJobs() {
-    setIsLoading(true)
-    fetch(BASE_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        const listIfJobs = data.map((job: Jobs) => ({
-          id: job.id,
-          title: job.title,
-          company: job.company
-        }))
-        // eslint-disable-next-line
-        // console.log(data)
-        setItems(listIfJobs)
-        setIsLoading(false)
-        return listIfJobs
-      })
+  if (isLoading) {
+    return <Loader />
   }
-
-  useEffect(() => {
-    fetchJobs()
-  }, [])
-
-  const listJobs = items.map((item: Jobs) => (
-    <StyledListItem key={item.id}>{item.title}</StyledListItem>
-  ))
-
-  const content = !isLoading ? listJobs : <Loader />
 
   return (
     <StyledUl>
-      {content}
-    </StyledUl>
+      {(items.map(({
+        company_logo, id, company, title, created_at, location
+      }: Job) => (
+        <JobItem
+          key={id}
+          company_logo={company_logo}
+          company={company}
+          title={title}
+          created_at={created_at}
+          location={location}
+        />
 
+      )))}
+    </StyledUl>
   )
 }
 

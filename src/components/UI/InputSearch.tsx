@@ -1,6 +1,6 @@
-import styled, { StyledComponent, MyTheme } from 'styled-components'
+import styled from 'styled-components'
 
-const InputSearch: StyledComponent<'input', { theme: MyTheme }> = styled.input`
+const InputSearch = styled.input`
     height: 56px;
     border-radius: 4px;
     padding-right: -160px;

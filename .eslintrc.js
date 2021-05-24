@@ -30,7 +30,9 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     'no-empty': 0,
+    'react/no-unused-prop-types': 0,
     '@typescript-eslint/no-empty-interface': 0,
+    'camelcase': 0,
     'react/prop-types': 0,
     '@typescript-eslint/no-namespace': 'off',
     semi: [2, 'never'],
@@ -71,7 +73,6 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-return-await': 'off',
     'import/named': 'off',
-    camelcase: ['error', { ignoreDestructuring: true }],
     'prettier/prettier': 'off'
   },
   overrides: [

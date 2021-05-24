@@ -1,6 +1,6 @@
-import { MyTheme } from 'styled-components'
+import { DefaultTheme } from 'styled-components'
 
-const theme: MyTheme = {
+const theme: DefaultTheme = {
   logoTextSize: '36px',
   infoFontColor: '#B9BDCF',
   primaryFontSize: '20px',

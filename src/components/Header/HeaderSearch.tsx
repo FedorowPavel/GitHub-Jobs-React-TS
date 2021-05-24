@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import image from '../../assets/images/skyscrapers.png'
 import HeaderSearchForm from './HeaderSearchForm'
 
-const Wrapper = styled.div`
+const WrapperStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,18 +13,13 @@ const Wrapper = styled.div`
     border-radius: 8px;
     background-image: url('${image}');
     background-position: center center;
-
-    & form {
-        width: 65%;
-        position: relative;
-    }
 `
 
 function HeaderSearch(): JSX.Element {
   return (
-    <Wrapper>
+    <WrapperStyled>
       <HeaderSearchForm />
-    </Wrapper>
+    </WrapperStyled>
   )
 }
 

@@ -10,38 +10,12 @@ const Wrapper = styled.div`
   grid-gap: 32px;
   color: ${(props) => props.theme.primaryTextColor};
   
-
-  & header {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    
-    
+  @media screen and (max-width: 800px) {
+    grid-gap: 0;
+    padding: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
   }
-
-  & aside {
-    //border: 1px solid rgba(128, 128, 128, 0.1);
-    padding-top: 12px;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-
-    input {
-      height: 48px;
-    }
-  }
-
-  & main {
-    //border: 1px solid rgba(128, 128, 128, 0.1);
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    
-  }
-
-  & footer {
-    //border: 1px solid rgba(128, 128, 128, 0.1);
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-  }
-
 `
 
 export default Wrapper

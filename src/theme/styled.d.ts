@@ -1,7 +1,7 @@
 import 'styled-components'
 
 declare module 'styled-components' {
-    export interface MyTheme {
+    export interface DefaultTheme {
         logoTextSize: string;
         infoFontColor: string
         primaryFontSize: string;

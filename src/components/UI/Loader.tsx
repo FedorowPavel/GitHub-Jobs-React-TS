@@ -18,7 +18,7 @@ const StyledDiv = styled.div`
     border: 8px solid #1e86ff ;
     border-radius: 50%;
     animation: rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #1e86ff transparent transparent transparent;
+    border-color: ${(props) => props.theme.infoFontColor} transparent transparent transparent;
   }
   div:nth-child(1) {
     animation-delay: -0.45s;

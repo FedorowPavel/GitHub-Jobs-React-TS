@@ -1,6 +1,6 @@
-import styled, { StyledComponent, MyTheme } from 'styled-components'
+import styled from 'styled-components'
 
-const Button: StyledComponent<'button', { theme: MyTheme }> = styled.button`
+const Button = styled.button`
     height: 48px;
     width: 146px;
     position: absolute;
