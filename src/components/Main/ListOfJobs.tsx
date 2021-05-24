@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Loader from '../UI/Loader'
-import useJobsFetch from '../../assets/custom-hooks/useJobsFetch'
+import useJobsFetch from '../../custom-hooks/useJobsFetch'
 import JobItem from './JobCard/JobCard'
 
 interface Job {

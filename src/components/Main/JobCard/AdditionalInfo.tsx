@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React from 'react'
-import useGetDateDifference from '../../../assets/custom-hooks/useGetDateDifference'
+import useGetDateDifference from '../../../custom-hooks/useGetDateDifference'
 
 const StyledWrapper = styled.div`
   position: absolute;
