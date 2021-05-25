@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import useGetDateDifference from '../../../custom-hooks/useGetDateDifference'
-import { testActions } from '../../../store/testSlice'
-import { test2Actions } from '../../../store/anotherTestSlice'
+import { jobsActions } from '../../../store/jobsSlice'
 
 const StyledWrapper = styled.div`
   position: absolute;
@@ -18,13 +17,12 @@ const StyledWrapper = styled.div`
 const AdditionalInfo: React.FC<{date: string, location: string}> = ({ date, location }) => {
   const howLongAgoDate = `${useGetDateDifference(date)} ago`
   const dispatch = useDispatch()
-  // const test = useSelector((state) => state.test.secondName)
-  // // eslint-disable-next-line no-console
+  // const test: string = useSelector((state: RootState) => state.test.name)
+  // eslint-disable-next-line no-console
   // console.log(test)
 
   const onClickHandler = () => {
-    dispatch(testActions.printText())
-    dispatch(test2Actions.printTextAnother())
+    dispatch(jobsActions.fetchJobs())
   }
 
   return (

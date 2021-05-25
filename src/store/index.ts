@@ -1,12 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit'
-import testSlice from './testSlice'
-import test2Slice from './anotherTestSlice'
+import createSagaMiddleware from 'redux-saga'
+import jobsSlice from './jobsSlice'
+import { watcherSaga } from './sagas/rootSaga'
+
+const sagaMiddleware = createSagaMiddleware()
+
+const middleware = [sagaMiddleware]
 
 const store = configureStore({
   reducer: {
-    test: testSlice.reducer,
-    test2: test2Slice.reducer
-  }
+    jobs: jobsSlice.reducer
+  },
+  middleware
 })
 
+sagaMiddleware.run(watcherSaga)
+
 export default store
+
+export type RootState = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch

@@ -1,8 +1,12 @@
 import React from 'react'
+// import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import Loader from '../UI/Loader'
-import useJobsFetch from '../../custom-hooks/useJobsFetch'
+import { useSelector } from 'react-redux'
+// import Loader from '../UI/Loader'
+// import useJobsFetch from '../../custom-hooks/useJobsFetch'
 import JobItem from './JobCard/JobCard'
+import { RootState } from '../../store'
+// import { jobsActions } from '../../store/jobsSlice'
 
 interface Job {
   id: string,
@@ -23,11 +27,14 @@ const StyledUl = styled.ul`
 `
 
 const ListOfJobs: React.FC = () => {
-  const { isLoading, items } = useJobsFetch()
+  // const { isLoading, items } = useJobsFetch()
+  // const dispatch = useDispatch()
+  // dispatch(jobsActions.fetchJobs())
+  const items = useSelector((state: RootState) => state.jobs.jobs)
 
-  if (isLoading) {
-    return <Loader />
-  }
+  // if (isLoading) {
+  //   return <Loader />
+  // }
 
   return (
     <StyledUl>
