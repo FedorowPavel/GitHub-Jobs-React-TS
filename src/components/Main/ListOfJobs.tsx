@@ -2,7 +2,7 @@ import React from 'react'
 // import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
-// import Loader from '../UI/Loader'
+import Loader from '../UI/Loader'
 // import useJobsFetch from '../../custom-hooks/useJobsFetch'
 import JobItem from './JobCard/JobCard'
 import { RootState } from '../../store'
@@ -31,10 +31,12 @@ const ListOfJobs: React.FC = () => {
   // const dispatch = useDispatch()
   // dispatch(jobsActions.fetchJobs())
   const items = useSelector((state: RootState) => state.jobs.jobs)
+  // eslint-disable-next-line no-console
+  console.log('[list of jobs] render', items)
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (items.length === 0) {
+    return <Loader />
+  }
 
   return (
     <StyledUl>
