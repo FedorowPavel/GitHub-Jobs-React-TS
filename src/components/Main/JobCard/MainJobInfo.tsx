@@ -8,6 +8,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-grow: 1;
 `
 
 const MainJobInfo: React.FC<{

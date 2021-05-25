@@ -25,8 +25,5 @@ export default function useJobsFetch() {
       .finally(() => setIsLoading(false))
   }, [])
 
-  // eslint-disable-next-line no-console
-  console.log(items)
-
   return { items, isLoading }
 }
