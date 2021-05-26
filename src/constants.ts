@@ -1,1 +1,1 @@
-export const BASE_URL: string = '/positions.json'
+export const BASE_URL: string = '/positions.json?'

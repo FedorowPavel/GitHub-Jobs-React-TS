@@ -1,8 +1,13 @@
-import { takeLatest } from 'redux-saga/effects'
+import { takeLatest, call, put } from 'redux-saga/effects'
 import { jobsActions } from '../jobsSlice'
-import { handlerFetchJobs } from './handlerFetchJobs'
+import { requestJobs } from './requestJobs'
+
+export function* handlerFetchJobs() {
+  // @ts-ignore
+  const res = yield call(requestJobs)
+  yield put(jobsActions.setJobs(res))
+}
 
 export function* watcherSaga() {
-  // eslint-disable-next-line no-console
   yield takeLatest(jobsActions.fetchJobs, handlerFetchJobs)
 }

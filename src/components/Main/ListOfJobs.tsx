@@ -1,12 +1,11 @@
-import React from 'react'
-// import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Loader from '../UI/Loader'
-// import useJobsFetch from '../../custom-hooks/useJobsFetch'
 import JobItem from './JobCard/JobCard'
-import { RootState } from '../../store'
-// import { jobsActions } from '../../store/jobsSlice'
+import { jobsActions } from '../../store/jobsSlice'
+import Pagination from './JobCard/pagination'
+import usePaginate from '../../custom-hooks/usePaginate'
 
 interface Job {
   id: string,
@@ -27,20 +26,29 @@ const StyledUl = styled.ul`
 `
 
 const ListOfJobs: React.FC = () => {
-  // const { isLoading, items } = useJobsFetch()
-  // const dispatch = useDispatch()
-  // dispatch(jobsActions.fetchJobs())
-  const items = useSelector((state: RootState) => state.jobs.jobs)
-  // eslint-disable-next-line no-console
-  console.log('[list of jobs] render', items)
+  const dispatch = useDispatch()
 
-  if (items.length === 0) {
+  const {
+    switchPageHandler,
+    nextPageHandler,
+    prevPageHandler,
+    currPage,
+    currJobPage,
+    isLoading,
+    numberOfPages
+  } = usePaginate()
+
+  useEffect(() => {
+    dispatch(jobsActions.fetchJobs())
+  }, [dispatch])
+
+  if (isLoading) {
     return <Loader />
   }
 
   return (
     <StyledUl>
-      {(items.map(({
+      {(currJobPage.map(({
         company_logo, id, company, title, created_at, location
       }: Job) => (
         <JobItem
@@ -51,8 +59,14 @@ const ListOfJobs: React.FC = () => {
           created_at={created_at}
           location={location}
         />
-
       )))}
+      <Pagination
+        currPage={currPage}
+        switchPageHandler={switchPageHandler}
+        numberOfPages={numberOfPages}
+        nextPageHandler={nextPageHandler}
+        prevPageHandler={prevPageHandler}
+      />
     </StyledUl>
   )
 }
