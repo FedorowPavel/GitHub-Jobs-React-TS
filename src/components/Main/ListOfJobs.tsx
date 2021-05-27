@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../UI/Loader'
 import JobItem from './JobCard/JobCard'
 import { jobsActions } from '../../store/jobsSlice'
 import Pagination from './JobCard/pagination'
 import usePaginate from '../../custom-hooks/usePaginate'
+import { RootState } from '../../store'
+import { BASE_URL, JOBS_PER_PAGE } from '../../constants'
 
-interface Job {
+export interface Job {
   id: string,
   title: string,
   company: string,
@@ -22,11 +24,16 @@ interface Job {
 
 const StyledUl = styled.ul`
   padding: 0;
+  margin: 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 `
 
 const ListOfJobs: React.FC = () => {
   const dispatch = useDispatch()
+  const isLoading = useSelector((state: RootState) => state.jobs.isLoading)
 
   const {
     switchPageHandler,
@@ -34,13 +41,19 @@ const ListOfJobs: React.FC = () => {
     prevPageHandler,
     currPage,
     currJobPage,
-    isLoading,
-    numberOfPages
+    numberOfPages,
+    curPart,
+    totalJobs
   } = usePaginate()
 
+  const paginationIsNeeded = totalJobs < JOBS_PER_PAGE
+  const isNoJobs = currJobPage.length
+
   useEffect(() => {
-    dispatch(jobsActions.fetchJobs())
-  }, [dispatch])
+    // eslint-disable-next-line no-console
+    console.log('[ListOfJobs] useEffect')
+    dispatch(jobsActions.fetchJobs(`${BASE_URL}page=${curPart}`))
+  }, [dispatch, curPart])
 
   if (isLoading) {
     return <Loader />
@@ -60,6 +73,7 @@ const ListOfJobs: React.FC = () => {
           location={location}
         />
       )))}
+      {!paginationIsNeeded && (
       <Pagination
         currPage={currPage}
         switchPageHandler={switchPageHandler}
@@ -67,6 +81,8 @@ const ListOfJobs: React.FC = () => {
         nextPageHandler={nextPageHandler}
         prevPageHandler={prevPageHandler}
       />
+      )}
+      {!isNoJobs && <span>No jobs</span>}
     </StyledUl>
   )
 }

@@ -1,17 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-interface initJobState {
+interface InitJobState {
   jobs: [],
-  isLoading: boolean
+  isLoading: boolean,
+  isGotAllJobsFromApi: boolean,
 }
 
 const jobsSlice = createSlice({
   name: 'jobs',
-  initialState: <initJobState>{ jobs: [], isLoading: true },
+  initialState: <InitJobState>{ jobs: [], isLoading: true, isGotAllJobsFromApi: false },
   reducers: {
-    fetchJobs() {},
+    fetchJobs(state, action) {
+      state.isLoading = true
+      // eslint-disable-next-line no-console
+      console.log(action)
+    },
+    fetchFilteredJobs(state, action) {
+      state.isLoading = true
+      state.jobs = []
+      // eslint-disable-next-line no-console
+      console.log(action)
+    },
     setJobs(state, action) {
-      state.jobs = action.payload
+      if (action.payload.length < 50) {
+        state.isGotAllJobsFromApi = true
+      }
+      // @ts-ignore
+      state.jobs = [...state.jobs, ...action.payload]
+      state.isLoading = false
+    },
+    setFilteredJobs(state, action) {
+      if (action.payload.length < 50) {
+        state.isGotAllJobsFromApi = true
+      }
+      // @ts-ignore
+      state.jobs = []
       state.isLoading = false
     }
   }

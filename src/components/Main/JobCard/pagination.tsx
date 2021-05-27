@@ -7,7 +7,9 @@ const UlStyled = styled.ul`
   flex-direction: row;
   list-style-type: none;
   padding-left: 0;
+  flex-wrap: wrap;
 `
+
 interface MyProps {
     isActive: boolean
 }
@@ -24,20 +26,22 @@ const BtnStyled = styled.button<MyProps>`
   border-radius: 4px;
   background-color: ${(props) => (props.isActive ? `${props.theme.primaryColor}` : 'transparent')};
   margin-right: 12px;
+  margin-bottom: 12px;
   cursor: pointer;
 
 
   &:hover {
     transform: scale(1.03);
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => (props.isActive ? 'white' : `${props.theme.primaryColor}`)};
     border: 1px solid ${(props) => props.theme.primaryColor};
   }
 `
 
 const Wrapper = styled.div`
-display: flex;
+   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  
 `
 
 const Pagination: React.FC<{

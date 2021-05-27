@@ -1,9 +1,9 @@
 import React from 'react'
-import Main from './components/Main'
 import Aside from './components/Aside/Aside'
 import Header from './components/Header/Header'
 import Wrapper from './components/Wrapper'
 import Footer from './components/Footer'
+import Main from './components/Main/Main'
 
 const App: React.FC = () => (
   <Wrapper>

@@ -12,6 +12,7 @@ const StyledListItem = styled.li`
   display: flex;
   flex-direction: row;
   position: relative;
+  cursor: pointer;
 `
 
 const JobItem: React.FC<{
