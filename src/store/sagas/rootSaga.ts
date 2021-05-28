@@ -11,5 +11,5 @@ export function* handlerFetchJobs({ payload }) {
 
 export function* watcherSaga() {
   yield takeLatest(jobsActions.fetchJobs, handlerFetchJobs)
-  yield takeLatest(jobsActions.fetchFilteredJobs, handlerFetchJobs)
+  // yield takeLatest(jobsActions.fetchFilteredJobs, handlerFetchJobs)
 }

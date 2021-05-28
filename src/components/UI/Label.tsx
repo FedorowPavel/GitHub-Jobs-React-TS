@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { jobsActions } from '../../store/jobsSlice'
-import { BASE_URL } from '../../constants'
+// import { useDispatch } from 'react-redux'
+// import { jobsActions } from '../../store/jobsSlice'
+// import { BASE_URL } from '../../constants'
 
 const StyledLabel = styled.label``
 
@@ -34,28 +34,24 @@ const StyledSpan = styled.span`
     }
 `
 
-const Label: React.FC = () => {
-  const dispatch = useDispatch()
-  const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    dispatch(jobsActions.fetchFilteredJobs(
-      `${BASE_URL}${e.currentTarget.checked
-        ? `type=${e.currentTarget.value}`
-        : ''}`
-    ))
-  }
-
-  return (
-    <StyledLabel htmlFor="fullTime">
-      <StyledInput
-        id="fullTime"
-        name="fullTime"
-        value="full+time"
-        type="checkbox"
-        onChange={onChangeHandler}
-      />
-      <StyledSpan>Full time</StyledSpan>
-    </StyledLabel>
-  )
-}
+const Label: React.FC = () => (
+  <StyledLabel htmlFor="fullTime">
+    <StyledInput
+      id="fullTime"
+      name="fullTime"
+      value="full+time"
+      type="checkbox"
+    />
+    <StyledSpan>Full time</StyledSpan>
+  </StyledLabel>
+)
+// const dispatch = useDispatch()
+// const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+//   dispatch(jobsActions.fetchFilteredJobs(
+//     `${BASE_URL}${e.currentTarget.checked
+//       ? `type=${e.currentTarget.value}`
+//       : ''}`
+//   ))
+// }
 
 export default Label

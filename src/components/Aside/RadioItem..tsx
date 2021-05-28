@@ -1,19 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { jobsActions } from '../../store/jobsSlice'
-import { BASE_URL } from '../../constants'
+// import { useDispatch } from 'react-redux'
+// import { jobsActions } from '../../store/jobsSlice'
+// import { BASE_URL } from '../../constants'
 
 const RadioItem: React.FC<{city: string, name: string}> = (props) => {
   const { city, name } = props
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    dispatch(jobsActions.fetchFilteredJobs(
-      `${BASE_URL}${e.currentTarget.checked
-        ? `location=${e.currentTarget.value}`
-        : ''}`
-    ))
-  }
+  // const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+  //   dispatch(jobsActions.fetchFilteredJobs(
+  //     `${BASE_URL}${e.currentTarget.checked
+  //       ? `location=${e.currentTarget.value}`
+  //       : ''}`
+  //   ))
+  // }
   return (
     <label htmlFor={city}>
       <input
@@ -21,7 +21,7 @@ const RadioItem: React.FC<{city: string, name: string}> = (props) => {
         value={city}
         name={name}
         type="radio"
-        onChange={onChangeHandler}
+        // onChange={onChangeHandler}
       />
       <span>{city}</span>
     </label>

@@ -7,7 +7,7 @@ import { jobsActions } from '../../store/jobsSlice'
 import Pagination from './JobCard/pagination'
 import usePaginate from '../../custom-hooks/usePaginate'
 import { RootState } from '../../store'
-import { BASE_URL, JOBS_PER_PAGE } from '../../constants'
+import { JOBS_PER_PAGE } from '../../constants'
 
 export interface Job {
   id: string,
@@ -52,7 +52,7 @@ const ListOfJobs: React.FC = () => {
   useEffect(() => {
     // eslint-disable-next-line no-console
     console.log('[ListOfJobs] useEffect')
-    dispatch(jobsActions.fetchJobs(`${BASE_URL}page=${curPart}`))
+    dispatch(jobsActions.fetchJobs({ page: `page=${curPart}` }))
   }, [dispatch, curPart])
 
   if (isLoading) {
