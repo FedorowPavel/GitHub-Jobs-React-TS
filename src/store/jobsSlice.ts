@@ -12,16 +12,19 @@ const jobsSlice = createSlice({
   reducers: {
     fetchJobs(state, action) {
       state.isLoading = true
+
       // eslint-disable-next-line no-console
       console.log(action)
     },
-    // fetchFilteredJobs(state, action) {
-    //   state.isLoading = true
-    //   state.jobs = []
-    //   // eslint-disable-next-line no-console
-    //   console.log(action)
-    // },
     setJobs(state, action) {
+      if (action.payload.length < 50) {
+        state.isGotAllJobsFromApi = true
+      }
+      // @ts-ignore
+      state.jobs = action.payload
+      state.isLoading = false
+    },
+    updateJobs(state, action) {
       if (action.payload.length < 50) {
         state.isGotAllJobsFromApi = true
       }
@@ -29,14 +32,7 @@ const jobsSlice = createSlice({
       state.jobs = [...state.jobs, ...action.payload]
       state.isLoading = false
     }
-    // setFilteredJobs(state, action) {
-    //   if (action.payload.length < 50) {
-    //     state.isGotAllJobsFromApi = true
-    //   }
-    //   // @ts-ignore
-    //   state.jobs = []
-    //   state.isLoading = false
-    // }
+
   }
 })
 
