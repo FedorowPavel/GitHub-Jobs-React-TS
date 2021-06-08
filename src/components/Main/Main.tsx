@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React from 'react'
-import ListOfJobs from './ListOfJobs'
+import Jobs from './ListOfJobs'
 
 const Main = styled.main`
   grid-column: 2 / 3;
@@ -15,7 +15,7 @@ const Main = styled.main`
 
 export default () => (
   <Main>
-    <ListOfJobs />
+    <Jobs />
   </Main>
 
 )

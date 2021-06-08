@@ -1,29 +1,25 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../store'
-import { INITIAL_PAGE, JOBS_PER_PAGE } from '../constants'
+import { INITIAL_PAGE, ITEMS_PER_PAGE } from '../constants'
+import { PaginationInfo } from '../Types/interfaces'
 
-export default function usePaginate() {
+export default function usePaginate(data: PaginationInfo) {
   const [currPage, setCurrPage] = useState(INITIAL_PAGE)
   const [curPart, setCurPart] = useState(1)
-  const jobs = useSelector((state: RootState) => state.jobs.jobs)
-  const isGotAllJobsFromApi = useSelector((state: RootState) => state.jobs.isGotAllJobsFromApi)
 
-  const totalJobs = jobs.length
-  const lastJobIndex = currPage * JOBS_PER_PAGE
-  const firstJobIndex = lastJobIndex - JOBS_PER_PAGE
-  const currJobPage = jobs.slice(firstJobIndex, lastJobIndex)
-  const numberOfPages = Math.ceil(totalJobs / JOBS_PER_PAGE)
+  const lastDataIndex = currPage * ITEMS_PER_PAGE
+  const firstDataIndex = lastDataIndex - ITEMS_PER_PAGE
+  const currDataPage = data.array.slice(firstDataIndex, lastDataIndex)
+  const numberOfPages = Math.ceil(data.totalDataItems / ITEMS_PER_PAGE)
 
   const switchPageHandler = (pageNumber: number): void => {
     setCurrPage(pageNumber)
-    if (totalJobs === JOBS_PER_PAGE * pageNumber) {
+    if (data.totalDataItems === ITEMS_PER_PAGE * pageNumber) {
       setCurPart(curPart + 1)
     }
   }
 
   const nextPageHandler = (): void => {
-    if (currPage === numberOfPages - 1 && !isGotAllJobsFromApi) {
+    if (currPage === numberOfPages - 1 && !data.isGotAllDataFromApi) {
       setCurPart(curPart + 1)
     }
     if (currPage === numberOfPages) {
@@ -44,9 +40,8 @@ export default function usePaginate() {
     nextPageHandler,
     prevPageHandler,
     currPage,
-    currJobPage,
+    currDataPage,
     numberOfPages,
-    curPart,
-    totalJobs
+    curPart
   }
 }

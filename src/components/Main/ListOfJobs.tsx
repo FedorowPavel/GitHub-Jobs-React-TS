@@ -7,20 +7,8 @@ import { jobsActions } from '../../store/jobsSlice'
 import Pagination from './JobCard/pagination'
 import usePaginate from '../../custom-hooks/usePaginate'
 import { RootState } from '../../store'
-import { JOBS_PER_PAGE } from '../../constants'
-
-export interface Job {
-  id: string,
-  title: string,
-  company: string,
-  company_logo: string,
-  company_url: string,
-  created_at: string,
-  description: string,
-  location: string,
-  type: string,
-  url: string,
-}
+import { ITEMS_PER_PAGE } from '../../constants'
+import { Job, PaginationInfo } from '../../Types/interfaces'
 
 const StyledUl = styled.ul`
   padding: 0;
@@ -31,26 +19,34 @@ const StyledUl = styled.ul`
   min-height: 100%;
 `
 
-const ListOfJobs: React.FC = () => {
+const Jobs: React.FC = () => {
   const dispatch = useDispatch()
   const isLoading = useSelector((state: RootState) => state.jobs.isLoading)
+  const jobs = useSelector((state: RootState) => state.jobs.jobs)
+  const isGotAllJobsFromApi = useSelector((state: RootState) => state.jobs.isGotAllJobsFromApi)
+
+  const totalJobs = jobs.length
+
+  const dataForPagination: PaginationInfo = {
+    array: jobs,
+    isGotAllDataFromApi: isGotAllJobsFromApi,
+    totalDataItems: jobs.length
+  }
 
   const {
     switchPageHandler,
     nextPageHandler,
     prevPageHandler,
     currPage,
-    currJobPage,
+    currDataPage,
     numberOfPages,
-    curPart,
-    totalJobs
-  } = usePaginate()
+    curPart
+  } = usePaginate(dataForPagination)
 
-  const paginationIsNeeded = totalJobs < JOBS_PER_PAGE
-  const isNoJobs = currJobPage.length
+  const paginationIsNeeded = totalJobs < ITEMS_PER_PAGE
+  const isNoJobs = currDataPage.length
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
     console.log('[ListOfJobs] useEffect')
     dispatch(jobsActions.fetchJobs({ page: `page=${curPart}` }))
   }, [dispatch, curPart])
@@ -61,7 +57,7 @@ const ListOfJobs: React.FC = () => {
 
   return (
     <StyledUl>
-      {(currJobPage.map(({
+      {(currDataPage.map(({
         company_logo, id, company, title, created_at, location
       }: Job) => (
         <JobItem
@@ -87,4 +83,4 @@ const ListOfJobs: React.FC = () => {
   )
 }
 
-export default ListOfJobs
+export default Jobs

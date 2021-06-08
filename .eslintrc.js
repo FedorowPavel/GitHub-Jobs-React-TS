@@ -73,7 +73,8 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-return-await': 'off',
     'import/named': 'off',
-    'prettier/prettier': 'off'
+    'prettier/prettier': 'off',
+    'no-console': 'off'
   },
   overrides: [
     {
