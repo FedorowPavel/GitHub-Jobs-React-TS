@@ -12,10 +12,8 @@ export function* handlerFetchJobs({ payload }) {
   // @ts-ignore
   const res = yield call(requestJobs, requestObject)
   if (Object.keys(requestObject).length > 1) {
-    console.log('>1', requestObject)
     yield put(jobsActions.setJobs(res))
   } else {
-    console.log('else')
     yield put(jobsActions.updateJobs(res))
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import RadioItem from './RadioItem.'
 
-const cities: string[] = ['London', 'Amsterdam', 'New York', 'Berlin']
+const cities: string[] = ['Remote', 'Amsterdam', 'New York', 'Berlin']
 
 const StyledDiv = styled.div`
     display: flex;

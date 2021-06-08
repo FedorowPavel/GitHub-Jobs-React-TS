@@ -16,3 +16,9 @@ export interface PaginationInfo {
     isGotAllDataFromApi: boolean,
     totalDataItems: number
 }
+
+export interface InitJobState {
+    jobs: [],
+    isLoading: boolean,
+    isGotAllJobsFromApi: boolean,
+}

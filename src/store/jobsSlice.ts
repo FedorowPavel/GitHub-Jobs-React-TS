@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-interface InitJobState {
-  jobs: [],
-  isLoading: boolean,
-  isGotAllJobsFromApi: boolean,
-}
+import { InitJobState } from '../Types/interfaces'
 
 const jobsSlice = createSlice({
   name: 'jobs',
@@ -12,8 +7,6 @@ const jobsSlice = createSlice({
   reducers: {
     fetchJobs(state, action) {
       state.isLoading = true
-
-      // eslint-disable-next-line no-console
       console.log(action)
     },
     setJobs(state, action) {
