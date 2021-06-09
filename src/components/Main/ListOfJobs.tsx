@@ -11,12 +11,14 @@ import { ITEMS_PER_PAGE } from '../../constants'
 import { Job, PaginationInfo } from '../../Types/interfaces'
 
 const StyledUl = styled.ul`
+  
   padding: 0;
   margin: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  justify-content: space-between;
 `
 
 const Jobs: React.FC = () => {
@@ -68,6 +70,7 @@ const Jobs: React.FC = () => {
           created_at={created_at}
           location={location}
         />
+
       )))}
       {!paginationIsNeeded && (
       <Pagination

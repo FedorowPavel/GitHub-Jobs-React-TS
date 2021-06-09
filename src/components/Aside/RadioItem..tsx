@@ -7,6 +7,7 @@ const RadioItem: React.FC<{city: string, name: string}> = (props) => {
   const dispatch = useDispatch()
 
   const onChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    console.log('radio input')
     dispatch(jobsActions.fetchJobs({ location: `location=${e.currentTarget.value}` }))
   }
   return (

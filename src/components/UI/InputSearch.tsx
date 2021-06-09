@@ -25,10 +25,15 @@ const InputStyled = styled.input`
 
 const InputSearch: React.FC<{type: string, placeholder: string}> = (props) => {
   const { type, placeholder } = props
+
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
 
-  useDebouncedEffect(() => dispatch(jobsActions.fetchJobs({ location: `location=${value}` })), [value], 500)
+  useDebouncedEffect(
+    () => dispatch(jobsActions.fetchJobs({ location: `location=${value}` })),
+    [value],
+    300
+  )
 
   return (
     <InputStyled

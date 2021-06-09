@@ -4,11 +4,16 @@ const Wrapper = styled.div`
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
+  color: ${(props) => props.theme.primaryTextColor};
+  
   display: grid;
   grid-template-columns: 3.5fr 6.5fr;
   grid-template-rows: auto 1fr auto;
   grid-gap: 32px;
-  color: ${(props) => props.theme.primaryTextColor};
+  //display: flex;
+  //flex-wrap: wrap;
+  //align-content: space-between;
+  
   
   @media screen and (max-width: 800px) {
     grid-gap: 0;

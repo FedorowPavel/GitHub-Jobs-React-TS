@@ -6,6 +6,8 @@ import HeaderSearch from './HeaderSearch'
 const Header = styled.header`
   grid-column: 1 / 3;
   grid-row: 1 / 2;
+  //flex-basis: 100%;
+  //margin-bottom: 20px;
 `
 
 export default () => (
