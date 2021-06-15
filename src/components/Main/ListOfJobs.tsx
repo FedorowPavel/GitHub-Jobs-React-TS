@@ -18,7 +18,7 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  justify-content: space-between;
+  //justify-content: space-between;
 `
 
 const Jobs: React.FC = () => {

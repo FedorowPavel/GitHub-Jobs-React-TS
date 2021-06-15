@@ -41,6 +41,8 @@ const Wrapper = styled.div`
    display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  flex-grow: 1;
+  align-items: flex-end;
   
 `
 
