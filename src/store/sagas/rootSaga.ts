@@ -1,16 +1,20 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
+import { PayloadAction } from '@reduxjs/toolkit'
 import { jobsActions } from '../jobsSlice'
 import { requestJobs } from './requestJobs'
+import { IJob } from '../../Types/interfaces'
 
 const defaultParams = {
   page: 'page=1'
 }
 
-// @ts-ignore
-export function* handlerFetchJobs({ payload }) {
+type TPayload = {
+  page: string
+}
+
+export function* handlerFetchJobs({ payload }: PayloadAction<TPayload>) {
   const requestObject = Object.assign(defaultParams, payload)
-  // @ts-ignore
-  const res = yield call(requestJobs, requestObject)
+  const res: IJob[] = yield call(requestJobs, requestObject)
   if (Object.keys(requestObject).length > 1) {
     yield put(jobsActions.setJobs(res))
   } else {

@@ -13,7 +13,6 @@ const jobsSlice = createSlice({
       if (action.payload.length < 50) {
         state.isGotAllJobsFromApi = true
       }
-      // @ts-ignore
       state.jobs = action.payload
       state.isLoading = false
     },
@@ -21,7 +20,6 @@ const jobsSlice = createSlice({
       if (action.payload.length < 50) {
         state.isGotAllJobsFromApi = true
       }
-      // @ts-ignore
       state.jobs = [...state.jobs, ...action.payload]
       state.isLoading = false
     }

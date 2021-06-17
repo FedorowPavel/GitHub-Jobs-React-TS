@@ -74,13 +74,14 @@ module.exports = {
     'no-return-await': 'off',
     'import/named': 'off',
     'prettier/prettier': 'off',
-    'no-console': 'off'
+    'no-console': 'off',
+    'linebreak-style': 'off'
   },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        'no-undef': 'off'
+        'no-undef': 'off',
       }
     }
   ]

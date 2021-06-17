@@ -5,7 +5,6 @@ const Footer = styled.footer`
   text-align: center;
   color: ${(props) => props.theme.infoFontColor};
   grid-column: 1 / 3;
-  //flex-basis: 100%;
   
   @media screen and (max-width: 800px) {
     grid-column: 1 / 2;

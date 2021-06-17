@@ -8,7 +8,7 @@ import Pagination from './JobCard/pagination'
 import usePaginate from '../../custom-hooks/usePaginate'
 import { RootState } from '../../store'
 import { ITEMS_PER_PAGE } from '../../constants'
-import { Job, PaginationInfo } from '../../Types/interfaces'
+import { IJob, PaginationInfo } from '../../Types/interfaces'
 
 const StyledUl = styled.ul`
   
@@ -18,7 +18,6 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  //justify-content: space-between;
 `
 
 const Jobs: React.FC = () => {
@@ -61,7 +60,7 @@ const Jobs: React.FC = () => {
     <StyledUl>
       {(currDataPage.map(({
         company_logo, id, company, title, created_at, location
-      }: Job) => (
+      }: IJob) => (
         <JobItem
           key={id}
           company_logo={company_logo}

@@ -1,21 +1,9 @@
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../constants'
-
-interface Job {
-    id: string,
-    title: string,
-    company: string,
-    company_logo: string,
-    company_url: string,
-    created_at: string,
-    description: string,
-    location: string,
-    type: string,
-    url: string,
-}
+import { IJob } from '../Types/interfaces'
 
 export default function useJobsFetch() {
-  const [items, setItems] = useState<Job[]>([])
+  const [items, setItems] = useState<IJob[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

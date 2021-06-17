@@ -1,4 +1,4 @@
-export interface Job {
+export interface IJob {
     id: string,
     title: string,
     company: string,
@@ -12,13 +12,13 @@ export interface Job {
 }
 
 export interface PaginationInfo {
-    array: Job[],
+    array: IJob[],
     isGotAllDataFromApi: boolean,
     totalDataItems: number
 }
 
 export interface InitJobState {
-    jobs: [],
+    jobs: any[],
     isLoading: boolean,
     isGotAllJobsFromApi: boolean,
 }
